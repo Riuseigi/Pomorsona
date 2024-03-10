@@ -1,0 +1,31 @@
+body {
+    font-family: Arial, sans-serif;
+    background-image: url(https://external-preview.redd.it/e_WvRTzU3h8NRiSkXxtrDzSxL89fFBwXiSA-wTmvSCI.png?auto=webp&s=763b39be53f75339c6e7a95911345175709d2800);
+    background-size: cover;
+    background-repeat: no-repeat;
+    
+    color: #ffffff;
+    text-align: center;
+    margin: 0;
+    padding: 0;
+  }
+  .timer-container {
+    margin-top: 50px;
+  }
+  .timer {
+    font-size: 3rem;
+    margin-bottom: 20px;
+  }
+  button {
+    background-color: #ffcc00;
+    color: #202020;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  button:hover {
+    background-color: #e0b600;
+  }
+  
