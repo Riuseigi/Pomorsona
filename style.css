@@ -25,14 +25,13 @@ body {
     margin: 0;
     padding: 0;
     font-family: var(--font-menu), sans-serif;
-    color: #ffffff;
-    height: 100vh;
-    width: 100vw;
-    text-align: center;
+    
+
   }
 
 
   .date-time__container{
+ 
     text-align: left;
     position: relative;
     color: #202020;
@@ -63,11 +62,43 @@ body {
     font-size: 30px;
     transform: rotate(353deg);
   }
+
+.pomodor__container{
+  
+ text-align: center;
+  display: flex;
+  justify-content: center;
+  align-self: center;
+ 
+}
+.timer-container__title{
+  font-family: var(--font-headline);
+  background-color: #0d0d0d;
+  border: 10px solid #ffff;
+  border-radius: 10px;
+  color: #1b1d26;
+  padding: 10px;
+  text-transform: uppercase;
+  transform: skewX(-30deg);
+  color: white;
+ 
+
+}
+
+
+
   .timer-container {
+   
+    padding: 2rem;
     margin-top: 50px;
   }
-  .timer {
+  .timer-container div{
     font-size: 3rem;
+    
+  }
+  .timer {
+    font-size: 6rem;
+    font-family: var(--font-persontext);
     margin-bottom: 20px;
   }
   button {
