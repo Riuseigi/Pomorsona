@@ -28,7 +28,22 @@ body {
     
 
   }
-
+  #bgVideo {
+    position: fixed;
+    right: 0;
+    bottom: 0;
+    min-width: 100%;
+    min-height: 100%;
+    z-index: -1;
+  }
+  
+  .content {
+    position: relative;
+    z-index: 1;
+    color: white;
+    text-align: center;
+    padding: 20px;
+  }
 
   .date-time__container{
  
@@ -81,7 +96,7 @@ body {
   text-transform: uppercase;
   transform: skewX(-30deg);
   color: white;
- 
+  clip-path: polygon(0 10%, 100% 0%, 100% 92%, 0 100%);
 
 }
 
@@ -97,20 +112,26 @@ body {
     
   }
   .timer {
-    font-size: 6rem;
+    color: #ffffff;
+    font-size: 300px;
     font-family: var(--font-persontext);
     margin-bottom: 20px;
   }
   button {
-    background-color: #ffcc00;
-    color: #202020;
-    border: none;
-    padding: 10px 20px;
-    margin: 5px;
-    font-size: 1rem;
-    cursor: pointer;
+  font-family: var(--font-persontext);
+  font-size: 24px;
+  color: #fff;
+  background-color: #d92323;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 10px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   }
   button:hover {
-    background-color: #e0b600;
+    background-color: #ffab40;;
   }
   
