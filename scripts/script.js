@@ -4,7 +4,7 @@ let intervalId;
 function updateTimer() {
   const minutes = Math.floor(time / 60).toString().padStart(2, '0');
   const seconds = (time % 60).toString().padStart(2, '0');
-  document.querySelector('.timer').textContent = `${minutes}:${seconds}`;
+  document.querySelector('.timer__minutes').textContent = `${minutes}:${seconds}`;
 }
 
 document.querySelector('.start').addEventListener('click', () => {
