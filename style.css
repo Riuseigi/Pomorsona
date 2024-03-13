@@ -226,3 +226,17 @@ body {
 .to-do-list input[type="checkbox"]:checked + label::before {
   background-color: #d92323; /* Change the color of the checkmark to green */
 }
+.addtask-btn{
+  font-family: var(--font-persontext);
+  font-size: 24px;
+  color: #fff;
+  background-color: #d92323;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  outline: none;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  border: 10px solid black;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
