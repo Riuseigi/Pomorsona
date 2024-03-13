@@ -193,6 +193,18 @@ body {
 
   text-align: left;
 }
+.todo-container h2{
+  text-align: center;
+  text-transform: uppercase;
+  font-family: var(--font-menu);
+  border: 10px solid #ffff;
+  border-radius: 10px;
+  color: #1b1d26;
+  padding: 10px;
+  color: white;
+  clip-path: polygon(0 10%, 100% 0%, 100% 92%, 0 100%);
+  margin-bottom: 20px;
+}
 .todo-container ul{
   list-style: none;
   margin: 0;
