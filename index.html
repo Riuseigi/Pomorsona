@@ -11,26 +11,62 @@
       <source src="bgvideo.mp4" type="video/mp4" />
       Your browser does not support HTML5 video.
     </video>
-    <div class="content">
-      <div class="date-time__container">
-        <div class="date__container">
-          <p class="date">06/03</p>
-          <p class="weekdays">Wednesday</p>
-          <div class="weather"><img src="" alt="" /></div>
-        </div>
+    <div class="date-time__container">
+      <div class="date__container">
+        <p class="date">06/03</p>
+        <p class="weekdays">Wednesday</p>
+        <div class="weather"><img src="" alt="" /></div>
       </div>
-      <div class="pomodor__container">
-        <div class="timer-container">
-          <div class="timer-container__title">
-            <div>Pomorsona</div>
-          </div>
+    </div>
+    <div class="body-container">
+      <section class="pomodor-section">
+        <div class="content">
+          <div class="pomodor__container">
+            <div class="timer-container">
+              <div class="timer-container__title">
+                <div>Pomorsona</div>
+              </div>
 
-          <div class="timer">25:00</div>
-          <button class="start">Start</button>
-          <button class="pause">Pause</button>
-          <button class="reset">Reset</button>
+              <div class="timer">
+                <p class="timer__title">Focus</p>
+                <img src="./imgs/dagger.png" alt="" />
+                <span class="timer__minutes">25</span>
+              </div>
+
+              <button class="start">Start</button>
+              <button class="pause">Pause</button>
+              <button class="reset">Reset</button>
+            </div>
+          </div>
         </div>
-      </div>
+      </section>
+      <section class="to-do-list">
+        <div class="todo-container">
+          <h2>To-Do List</h2>
+          <ul>
+            <li>
+              <input type="checkbox" id="task1" /><label for="task1"
+                >Finish coding the Pomodoro timer</label
+              >
+            </li>
+            <li>
+              <input type="checkbox" id="task2" /><label for="task2"
+                >Style the website using CSS</label
+              >
+            </li>
+            <li>
+              <input type="checkbox" id="task3" /><label for="task3"
+                >Add functionality to the to-do list</label
+              >
+            </li>
+            <li>
+              <input type="checkbox" id="task4" /><label for="task4"
+                >Implement a feature to mark tasks as completed</label
+              >
+            </li>
+          </ul>
+        </div>
+      </section>
     </div>
   </body>
   <script src="./scripts/script.js"></script>
