@@ -69,13 +69,16 @@
         <button class="addtask-btn">Add Task</button>
       </section>
     </div>
-    <div class="visualizer">
-      <audio id="audio" controls>
-        <source src="music.mp3" type="audio/mpeg" />
-      </audio>
-
-      <canvas id="visualizer"></canvas>
+    <button id="playButton">Play YouTube Music</button>
+    <div class="visualizer-background">
+      <div class="visualizer-container">
+        <div class="visualizer">
+          <audio id="audio" src="music.mp3" autoplay></audio>
+          <canvas id="visualizer"></canvas>
+        </div>
+      </div>
     </div>
   </body>
+  <script src="https://www.youtube.com/iframe_api"></script>
   <script src="./scripts/script.js"></script>
 </html>
