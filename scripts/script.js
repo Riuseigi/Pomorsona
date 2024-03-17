@@ -41,6 +41,7 @@ updateTimer();
 const audio = document.getElementById('audio');
 const canvas = document.getElementById('visualizer');
 const ctx = canvas.getContext('2d');
+const playButton = document.getElementById('playButton');
 
 const audioContext = new (window.AudioContext || window.webkitAudioContext)();
 const analyser = audioContext.createAnalyser();
@@ -61,7 +62,7 @@ function draw() {
 
   analyser.getByteFrequencyData(dataArray);
 
-  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)'; // Use rgba to set the fill style with alpha channel
+  ctx.fillStyle = 'rgba(0, 0, 0, 0.1)';
   ctx.fillRect(0, 0, WIDTH, HEIGHT);
 
   const barWidth = (WIDTH / bufferLength) * 2.5;
@@ -70,7 +71,7 @@ function draw() {
   for (let i = 0; i < bufferLength; i++) {
     const barHeight = dataArray[i] * 2;
 
-    ctx.fillStyle = `rgba(${barHeight + 100}, 5, 50, 1)`; // Adjust alpha value as needed
+    ctx.fillStyle = `rgba(${barHeight + 100}, 5, 50, 1)`;
     ctx.fillRect(x, HEIGHT - barHeight / 2, barWidth, barHeight);
 
     x += barWidth + 1;
@@ -78,22 +79,19 @@ function draw() {
 
   requestAnimationFrame(draw);
 }
-
-audio.addEventListener('play', () => {
-  audioContext.resume().then(() => {
-    console.log('Playback resumed successfully');
-  });
+playButton.addEventListener('click', () => {
+  if (audio.paused) {
+    audioContext.resume().then(() => {
+      console.log('Playback resumed successfully');
+      audio.play();
+      draw();
+    });
+  } else {
+    audio.pause();
+    console.log('Playback paused');
+    cancelAnimationFrame(draw);
+  }
 });
-
-audio.addEventListener('pause', () => {
-  console.log('Playback paused');
-});
-
-audio.addEventListener('ended', () => {
-  console.log('Playback ended');
-});
-
-draw();
 
 
 

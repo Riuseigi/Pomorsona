@@ -67,13 +67,19 @@
           </ul>
         </div>
         <button class="addtask-btn">Add Task</button>
+        <button class="addtask-btn">Clear</button>
       </section>
     </div>
 
     <div class="visualizer-background">
       <div class="visualizer-container">
         <div class="visualizer">
-          <audio id="audio" src="music.mp3" autoplay></audio>
+          <audio id="audio" controls>
+            <source src="music.mp3" type="audio/mpeg" />
+            Your browser does not support the audio element.
+          </audio>
+          <button id="playButton">Play</button>
+
           <canvas id="visualizer"></canvas>
         </div>
       </div>
