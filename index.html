@@ -11,6 +11,9 @@
       <source src="bgvideo.mp4" type="video/mp4" />
       Your browser does not support HTML5 video.
     </video>
+    <button id="playButton">
+      <img id="toggleImage" src="./imgs/Music.png" alt="Toggle Image" />
+    </button>
     <div class="date-time__container">
       <div class="date__container">
         <p class="date">06/03</p>
@@ -71,18 +74,13 @@
       </section>
     </div>
 
-    <div class="visualizer-background">
-      <div class="visualizer-container">
-        <div class="visualizer">
-          <audio id="audio" controls>
-            <source src="music.mp3" type="audio/mpeg" />
-            Your browser does not support the audio element.
-          </audio>
-          <button id="playButton">Play</button>
+    <div class="visualizer">
+      <audio id="audio" controls>
+        <source src="music.mp3" type="audio/mpeg" />
+        Your browser does not support the audio element.
+      </audio>
 
-          <canvas id="visualizer"></canvas>
-        </div>
-      </div>
+      <canvas id="visualizer"></canvas>
     </div>
   </body>
   <script src="https://www.youtube.com/iframe_api"></script>

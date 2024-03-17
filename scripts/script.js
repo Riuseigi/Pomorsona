@@ -79,16 +79,20 @@ function draw() {
 
   requestAnimationFrame(draw);
 }
+const togglemusic = document.getElementById('toggleImage');
 playButton.addEventListener('click', () => {
   if (audio.paused) {
     audioContext.resume().then(() => {
+      togglemusic.src = './imgs/Music.png';
       console.log('Playback resumed successfully');
       audio.play();
       draw();
     });
   } else {
     audio.pause();
+    togglemusic.src = './imgs/Music-off.png';
     console.log('Playback paused');
+    
     cancelAnimationFrame(draw);
   }
 });
