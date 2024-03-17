@@ -50,7 +50,7 @@ body {
     position: relative;
     color: #202020;
    
-    position: fixed;
+    position: absolute;
     width: 200px;
     height: 150px;
     padding: 10px;
@@ -80,7 +80,6 @@ body {
   }
 
 .pomodor__container{
-  
  text-align: center;
   display: flex;
   justify-content: center;
@@ -261,7 +260,7 @@ body {
 }
 
 #visualizer {
-  display: block;
+
   margin: 0 auto;
   width: 100%;
   height: 100px;
@@ -269,6 +268,7 @@ body {
 }
 
 #playButton {
+  z-index: 3;
   position: absolute;
   right: 0;
   background-color: transparent;
