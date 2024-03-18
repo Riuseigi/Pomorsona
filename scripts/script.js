@@ -76,7 +76,7 @@ const buttons = document.querySelectorAll('button')
  * @return {void} No return value
  */
 function playClickSound() {
-  const audio = new Audio('select.mp3'); // Path to your click sound file
+  const audio = new Audio('./music/select.mp3'); // Path to your click sound file
   audio.play();
   audio.volume = 0.1;
 }
