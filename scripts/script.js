@@ -1,5 +1,10 @@
-let workTime = 1 * 60; // 25 minutes in seconds
-let breakTime = 5 * 60; // 5 minutes in seconds
+let userTime = localStorage.getItem('workDuration');
+let userBreakTime = localStorage.getItem('breakDuration');
+
+
+
+let workTime = userTime * 60; // 25 minutes in seconds
+let breakTime = userBreakTime * 60; // 5 minutes in seconds
 let isWorking = true; // Indicates if it's currently work time
 let intervalId;
 const timerTitle = document.querySelector('.timer__title');
@@ -42,8 +47,8 @@ function startTimer() {
     } else if (breakTime === 0 && !isWorking) {
       clearInterval(intervalId);
       isWorking = true;
-      workTime = 25 * 60;
-      breakTime = 5 * 60;
+      workTime = userTime * 60;
+      breakTime = userTime * 60;
       updateTimer();
       startTimer();
     }
@@ -127,10 +132,17 @@ saveBtn.onclick = function() {
   // For example:
   localStorage.setItem('workDuration', workDuration);
   localStorage.setItem('breakDuration', breakDuration);
-
-  // Close the modal
+  
+  // Close the modals
   modal.style.display = 'none';
+  
+  // Reload the page
+  
 };
+workDuration.value = userTime;
+breakDuration.value = userBreakTime;
+
+
 
 
 
