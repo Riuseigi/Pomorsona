@@ -46,15 +46,14 @@ body {
   }
 
   .date-time__container{
-    text-align: left;
+    text-align: center;
     position: relative;
     color: #202020;
-   
+    border-radius: 50px;
     position: absolute;
     width: 200px;
     height: 150px;
     padding: 10px;
-    clip-path: polygon(0 4%, 91% 3%, 100% 54%, 0 81%);
     overflow: auto;
     padding: 1em;
   }
