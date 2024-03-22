@@ -2,7 +2,8 @@ let userTime = localStorage.getItem('workDuration');
 let userBreakTime = localStorage.getItem('breakDuration');
 
 
-
+const doneTone = new Audio('./music/done.wav');
+const focusTone = new Audio('./music/focus.mp3');
 let workTime = userTime * 60; // 25 minutes in seconds
 let breakTime = userBreakTime * 60; // 5 minutes in seconds
 let isWorking = true; // Indicates if it's currently work time
@@ -14,6 +15,7 @@ function updateTimer() {
     timerTitle.textContent = 'Focus';
     time = workTime;
   } else {
+  
     timerTitle.textContent = 'Breaktime';
     time = breakTime;
   }
@@ -40,11 +42,16 @@ function startTimer() {
     updateTimer();
 
     if (workTime === 0 && isWorking) {
+      doneTone.play()
       clearInterval(intervalId);
       isWorking = false;
       updateTimer();
       startTimer();
     } else if (breakTime === 0 && !isWorking) {
+ 
+        focusTone.play()
+    
+     
       clearInterval(intervalId);
       isWorking = true;
       workTime = userTime * 60;
@@ -64,8 +71,8 @@ document.querySelector('.pause').addEventListener('click', () => {
 document.querySelector('.reset').addEventListener('click', () => {
   clearInterval(intervalId);
   isWorking = true;
-  workTime = 25 * 60;
-  breakTime = 5 * 60;
+  workTime = userTime * 60;
+  breakTime = userBreakTime * 60;
   updateTimer();
 });
 
@@ -132,12 +139,13 @@ saveBtn.onclick = function() {
   // For example:
   localStorage.setItem('workDuration', workDuration);
   localStorage.setItem('breakDuration', breakDuration);
-  
+ 
+
   // Close the modals
   modal.style.display = 'none';
   
   // Reload the page
-  
+  location.reload();
 };
 workDuration.value = userTime;
 breakDuration.value = userBreakTime;
