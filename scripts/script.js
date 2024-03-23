@@ -171,6 +171,27 @@ weekdaysElement.textContent = `${weekdayName}`
 
 
 
+// to do list function
+const addTaskModal = document.getElementById("add-task-modal");
+const addTaskBtn = document.querySelector(".addtask-btn");
+const closeAddTaskBtn = document.getElementsByClassName("close")[0];
+
+addTaskBtn.onclick = function () {
+  addTaskModal.style.display = "block";
+};
+
+closeAddTaskBtn.onclick = function () {
+  addTaskModal.style.display = "none";
+};
+
+window.onclick = function (event) {
+  if (event.target === addTaskModal) {
+    addTaskModal.style.display = "none";
+  }
+};
+
+
+
 
 
 

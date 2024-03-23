@@ -75,7 +75,15 @@
           </ul>
         </div>
         <button class="addtask-btn">Add Task</button>
-        <button class="addtask-btn">Clear</button>
+        <button class="clear-btn">Clear</button>
+        <div id="add-task-modal" class="modal">
+          <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Add Task</h2>
+            <input type="text" id="task-name" placeholder="Enter task name" />
+            <button id="submit-task">Add</button>
+          </div>
+        </div>
       </section>
     </div>
     <div id="settingsModal" class="modal">
