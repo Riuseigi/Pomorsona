@@ -176,6 +176,9 @@ const addTaskModal = document.getElementById("add-task-modal");
 const addTaskBtn = document.querySelector(".addtask-btn");
 const closeAddTaskBtn = document.getElementsByClassName("close")[0];
 
+const taskInput = document.getElementById("task-input");
+
+const submitTask = document.getElementById("submitTask");
 addTaskBtn.onclick = function () {
   addTaskModal.style.display = "block";
 };
@@ -189,6 +192,17 @@ window.onclick = function (event) {
     addTaskModal.style.display = "none";
   }
 };
+
+submitTask.addEventListener("click", function () {
+  console.log(taskInput.value);
+  const task = taskInput.value;
+
+  const taskElement = document.createElement("li");
+  taskElement.textContent = task;
+
+  taskInput.value = "";
+  addTaskModal.style.display = "none";
+})
 
 
 
