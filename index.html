@@ -74,14 +74,17 @@
             </li>
           </ul>
         </div>
-        <button class="addtask-btn">Add Task</button>
-        <button class="clear-btn">Clear</button>
+        <div class="buttons">
+          <button class="addtask-btn">Add Task</button>
+          <button class="clear-btn">Clear</button>
+        </div>
+
         <div id="add-task-modal" class="modal">
           <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add Task</h2>
-            <input type="text" id="task-name" placeholder="Enter task name" />
-            <button id="submit-task">Add</button>
+            <input type="text" id="task-input" placeholder="Enter task name" />
+            <button id="submitTask">Add</button>
           </div>
         </div>
       </section>
@@ -95,6 +98,10 @@
           <input type="number" id="workDuration" min="1" value="25" />
           <label for="breakDuration">Break Duration (minutes):</label>
           <input type="number" id="breakDuration" min="1" value="5" />
+          <textarea
+            class="text-area"
+            placeholder="Enter your text here..."
+          ></textarea>
           <button id="saveSettings">Save</button>
         </div>
       </div>

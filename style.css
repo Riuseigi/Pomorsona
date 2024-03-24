@@ -251,7 +251,7 @@ body {
 .to-do-list input[type="checkbox"]:checked + label::before {
   background-color: #d92323; /* Change the color of the checkmark to green */
 }
-.addtask-btn{
+.buttons button{
   font-family: var(--font-persontext);
   font-size: 24px;
   color: #fff;
@@ -266,7 +266,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
-.addtask-btn:hover {
+.buttons button:hover {
   background-color: #ffab40;
 }
 
@@ -375,16 +375,17 @@ body {
 
 
 
-#task-name{
+#task-input{
   background-color: transparent;
   border: none;
   border-bottom: 2px solid #fff;
   color: #fff;
   font-size: 18px;
   padding: 10px 0;
-  width: 300px;
+  width: 80%;
   outline: none;
   text-align: center;
+ 
 }
 #submit-task{
   font-family: var(--font-persontext);
