@@ -177,7 +177,7 @@ const addTaskBtn = document.querySelector(".addtask-btn");
 const closeAddTaskBtn = document.getElementsByClassName("close")[0];
 
 const taskInput = document.getElementById("task-input");
-
+const clearBtn = document.querySelector(".clear-btn");
 const submitTask = document.getElementById("submitTask");
 addTaskBtn.onclick = function () {
   addTaskModal.style.display = "block";
@@ -211,13 +211,71 @@ submitTask.addEventListener("click", function () {
 
   document.getElementById("taskContainer").appendChild(taskLi);
 
-
+// Save the task in localStorage
+const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+tasks.push({ id: checkbox.id, task: task, completed: false });
+localStorage.setItem("tasks", JSON.stringify(tasks));
 
   addTaskModal.style.display = "none";
 })
 
+// function to load task from localStorage and display them
+
+function loadTasks() {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.forEach(task => {
+    const taskLi = document.createElement("li");
+    const checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.id = task.id;
+    checkbox.checked = task.completed;
+    const label = document.createElement("label");
+    label.textContent = task.task;
+    label.htmlFor = checkbox.id;
+    taskLi.appendChild(checkbox);
+    taskLi.appendChild(label);
+    document.getElementById("taskContainer").appendChild(taskLi);
+  });
+}
+document.addEventListener("DOMContentLoaded", function () {
+  loadTasks();
+});
+
+// Function to toggle label style when checkbox is checked
+function toggleLabelStyle(checkbox) {
+  const label = checkbox.nextElementSibling;
+  if (checkbox.checked) {
+    label.style.textDecoration = "line-through";
+    label.style.color = "gray";
+  } else {
+    label.style.textDecoration = "none";
+    label.style.color = "white";
+  }
+}
+
+// Event listener for checkbox change
+document.addEventListener("change", function(event) {
+  if (event.target && event.target.type === "checkbox") {
+    toggleLabelStyle(event.target);
+  }
+});
 
 
+// Clear all tasks
+clearBtn.addEventListener("click", function () {
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.forEach(task => {
+    const checkbox = document.getElementById(task.id);
+    if (checkbox) {
+      checkbox.checked = false;
+      toggleLabelStyle(checkbox);
+    }
+  });
+  localStorage.clear();
+  while (taskContainer.firstChild) {
+    taskContainer.removeChild(taskContainer.firstChild);
+  }
+})
 
 
 
