@@ -48,7 +48,7 @@ body {
   .date-time__container{
     text-align: center;
     position: relative;
-    color: #202020;
+   
     border-radius: 50px;
     position: absolute;
     width: 200px;
@@ -61,15 +61,15 @@ body {
     font-family: var(--font-menu);
     margin: 0;
     color: #ffffff; /* Text color */
-  -webkit-text-stroke: 1px #000000; /* White border */
+  /* White border */
     font-size: 50px;
     transform: rotate(353deg) translate(0px, 0px);
     background-color: #000000;
   }
   .weekdays{
-    background-color: black;
+   
     color: #ffffff;
-  
+    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
     position: absolute;
     top: 40px;
     left: 20%;
@@ -181,60 +181,62 @@ body {
   justify-content: center;
   align-items: center;
   flex-wrap: wrap;
+  margin: 0;
 }
 
 
 
 /* To do list Section */
 
-.to-do-list{
-
+.to-do-list {
   z-index: 1;
   color: #ffffff;
-
   padding: 10px;
   text-transform: uppercase;
-
   font-family: var(--font-persontext);
   text-align: center;
 }
-.todo-container{
-  width: 300px;
-  padding: 20px;
-  background-color: rgba(13, 13, 13, 0.8); /* Opacity value (0.8) can be adjusted as needed */
-  border: 10px solid #ffff;
 
+.todo-container {
+ 
+  padding: 20px;
+  background-color: rgba(13, 13, 13, 0.8);
+  border: 10px solid #ffff;
   text-align: left;
 }
-.todo-container h2{
+
+.todo-container h2 {
   text-align: center;
   text-transform: uppercase;
   font-family: var(--font-menu);
-  border: 10px solid #ffff;
   border-radius: 10px;
   color: #1b1d26;
   padding: 10px;
-  color: white;
+  background-color: white;
   clip-path: polygon(0 10%, 100% 0%, 100% 92%, 0 100%);
   margin-bottom: 20px;
 }
-.todo-container ul{
+
+.todo-container ul {
   list-style: none;
   margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column;
-    gap: 10px; /* Adjust the gap value as needed */
+  padding: 0;
+  display: flex;
+ flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between; /
 }
-.todo-container li{
+
+.todo-container li {
   font-size: 1.5rem;
+  margin-bottom: 10px;
+
 }
-.todo-container input{
-  transform: scale(1.5); /* Increase the scale value as needed */
-    margin-right: 10px; /* Add some spacing between the checkbox and the label */
-}
+
+
+
 .to-do-list input[type="checkbox"] {
-  display: none; /* Hide the default checkbox */
+  display: none;
 }
 
 .to-do-list input[type="checkbox"] + label::before {
@@ -242,16 +244,21 @@ body {
   display: inline-block;
   width: 20px;
   height: 20px;
-  border: 2px solid white; /* Default color of the checkbox */
+  border: 2px solid white;
   border-radius: 50px;
-  margin-right: 10px;
+  margin-right: 5px;
   transition: background-color 0.3s;
 }
 
 .to-do-list input[type="checkbox"]:checked + label::before {
-  background-color: #d92323; /* Change the color of the checkmark to green */
+  background-color: #d92323;
 }
-.buttons button{
+#taskContainer label{
+  display: flex;
+ width: 300;
+}
+
+.buttons button {
   font-family: var(--font-persontext);
   font-size: 24px;
   color: #fff;
@@ -266,6 +273,7 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
+
 .buttons button:hover {
   background-color: #ffab40;
 }
@@ -320,7 +328,7 @@ body {
   margin: 10% auto;
   padding: 20px;
   border: 1px solid #888;
-  width: 40%;
+  width: 50%;
   border: 10px solid #ffff;
 }
 .modal-content h2{
@@ -384,10 +392,10 @@ body {
   padding: 10px 0;
   width: 80%;
   outline: none;
-  text-align: center;
+
  
 }
-#submit-task{
+#submitTask{
   font-family: var(--font-persontext);
   font-size: 24px;
   color: #fff;
@@ -402,6 +410,6 @@ body {
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   transition: background-color 0.3s;
 }
-#submit-task:hover {
+#submitTask:hover {
   background-color: #ffab40;;
 }
