@@ -217,6 +217,7 @@ tasks.push({ id: checkbox.id, task: task, completed: false });
 localStorage.setItem("tasks", JSON.stringify(tasks));
 
   addTaskModal.style.display = "none";
+  taskInput.value = "";
 })
 
 // function to load task from localStorage and display them
