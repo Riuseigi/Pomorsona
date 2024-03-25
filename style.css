@@ -65,17 +65,19 @@ body {
     font-size: 50px;
     transform: rotate(353deg) translate(0px, 0px);
     background-color: #000000;
+    border: 4px solid #ffff;
   }
   .weekdays{
    
     color: #ffffff;
-    text-shadow: 1px 1px 2px red, 0 0 1em blue, 0 0 0.2em blue;
+    text-shadow: 1px 1px 2px red, 0 0 1em rgb(238, 88, 88), 0 0 0.2em rgb(238, 88, 88);
     position: absolute;
     top: 40px;
     left: 20%;
     font-family: var(--font-menu);
     font-size: 30px;
     transform: rotate(353deg);
+    background: #000000;
   }
 
 .pomodor__container{
