@@ -197,10 +197,22 @@ submitTask.addEventListener("click", function () {
   console.log(taskInput.value);
   const task = taskInput.value;
 
-  const taskElement = document.createElement("li");
-  taskElement.textContent = task;
+  const taskLi = document.createElement("li");
 
-  taskInput.value = "";
+  const checkbox = document.createElement("input");
+  checkbox.type = "checkbox";
+  checkbox.id = `task`+ Date.now() // Use a unique ID for each checkbox
+  const label = document.createElement("label");
+  label.textContent = task;
+  label.htmlFor = checkbox.id;// Associate the label with the checkbox
+
+  taskLi.appendChild(checkbox);
+  taskLi.appendChild(label);
+
+  document.getElementById("taskContainer").appendChild(taskLi);
+
+
+
   addTaskModal.style.display = "none";
 })
 
