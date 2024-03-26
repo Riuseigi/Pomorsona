@@ -111,16 +111,19 @@ var settingsBtn = document.getElementById('settingsBtn');
 
 // Get the <span> element that closes the modal
 var closeBtn = document.querySelectorAll('.close');
-
+closeBtn.forEach(btn => {
+  btn.onclick = function() {
+    modal.style.display = 'none';
+    
+  };
+})
 // When the user clicks the button, open the modal
 settingsBtn.onclick = function() {
   modal.style.display = 'block';
 };
 
 // When the user clicks on <span> (x), close the modal
-closeBtn.onclick = function() {
-  modal.style.display = 'none';
-};
+
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -265,6 +268,7 @@ document.addEventListener("change", function(event) {
 // Clear all tasks
 clearBtn.addEventListener("click", function () {
   const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  
   tasks.forEach(task => {
     const checkbox = document.getElementById(task.id);
     if (checkbox) {
