@@ -110,7 +110,7 @@ var modal = document.getElementById('settingsModal');
 var settingsBtn = document.getElementById('settingsBtn');
 
 // Get the <span> element that closes the modal
-var closeBtn = document.getElementsByClassName('close')[0];
+var closeBtn = document.querySelectorAll('.close');
 
 // When the user clicks the button, open the modal
 settingsBtn.onclick = function() {
@@ -272,7 +272,7 @@ clearBtn.addEventListener("click", function () {
       toggleLabelStyle(checkbox);
     }
   });
-  localStorage.clear();
+  localStorage.removeItem("tasks");
   while (taskContainer.firstChild) {
     taskContainer.removeChild(taskContainer.firstChild);
   }
