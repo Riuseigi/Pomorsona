@@ -62,9 +62,15 @@
           <div class="modal-content">
             <span class="close">&times;</span>
             <h2>Add Task</h2>
-            <input type="text" id="task-input" placeholder="Enter task name" />
+            <form class="form-container">
+              <input
+                type="text"
+                id="task-input"
+                placeholder="Enter task name"
+              />
 
-            <button id="submitTask" class="saveBtn">Add</button>
+              <button id="submitTask" class="saveBtn">Add</button>
+            </form>
           </div>
         </div>
       </section>
@@ -73,14 +79,14 @@
       <div class="modal-content">
         <span class="close">&times;</span>
         <h2>Settings</h2>
-        <div class="form-container">
+        <form class="form-container">
           <label for="workDuration">Work Duration (minutes):</label>
           <input type="number" id="workDuration" min="1" value="25" />
           <label for="breakDuration">Break Duration (minutes):</label>
           <input type="number" id="breakDuration" min="1" value="5" />
 
           <button id="saveSettings" class="saveBtn">Save</button>
-        </div>
+        </form>
       </div>
     </div>
     <div class="visualizer">
@@ -95,4 +101,7 @@
   <script src="https://www.youtube.com/iframe_api"></script>
   <script src="./scripts/visualizer.js"></script>
   <script src="./scripts/script.js"></script>
+  <script src="./scripts/clickSound.js"></script>
+  <script src="./scripts/displayDate.js"></script>
+  <script src="./scripts/modal.js"></script>
 </html>
