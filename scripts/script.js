@@ -4,33 +4,47 @@ let userBreakTime = localStorage.getItem('breakDuration');
 
 const doneTone = new Audio('./music/done.wav');
 const focusTone = new Audio('./music/focus.mp3');
-let workTime = userTime * 60; // 25 minutes in seconds
-let breakTime = userBreakTime * 60; // 5 minutes in seconds
+
+
+let workTime = userTime * 60;
+let breakTime = userBreakTime * 60; 
 let isWorking = true; // Indicates if it's currently work time
 let intervalId;
+
+
 const timerTitle = document.querySelector('.timer__title');
+
+/**
+ * Updates the timer display with the current work or break time.
+ *
+ * @return {void}
+ */
 function updateTimer() {
+  // Determine which timer to display and set the time variable accordingly.
   let time;
   if (isWorking) {
+    // Display "Focus" and set time to work time.
     timerTitle.textContent = 'Focus';
     time = workTime;
   } else {
-  
+    // Display "Breaktime" and set time to break time.
     timerTitle.textContent = 'Breaktime';
     time = breakTime;
   }
 
+  // Convert the time to minutes and seconds and format it with leading zeros.
   const minutes = Math.floor(time / 60).toString().padStart(2, '0');
   const seconds = (time % 60).toString().padStart(2, '0');
-  document.querySelector('.timer__minutes').textContent = `${minutes}:${seconds}`;
+  
+  // Update the timer display with the formatted time.
+  const timerMinutesElement = document.querySelector('.timer__minutes');
+  timerMinutesElement.textContent = `${minutes}:${seconds}`;
 }
 
-/**
- * Starts a timer for work and break intervals, updating the timer display and resetting the timer as needed.
- *
- * @param None
- * @return None
- */
+
+
+
+
 function startTimer() {
   intervalId = setInterval(() => {
     if (isWorking) {
@@ -51,7 +65,7 @@ function startTimer() {
  
         focusTone.play()
     
-     
+
       clearInterval(intervalId);
       isWorking = true;
       workTime = userTime * 60;
@@ -80,50 +94,26 @@ updateTimer();
 
 
 
-const buttons = document.querySelectorAll('button')
-/**
- * Plays a click sound.
- *
- * @param {none} - No parameters
- * @return {void} No return value
- */
-function playClickSound() {
-  const audio = new Audio('./music/select.mp3'); // Path to your click sound file
-  audio.play();
-  audio.volume = 0.1;
-}
-
-// Add click event listener to all buttons
-buttons.forEach(button => {
-  button.addEventListener('click', () => {
-    playClickSound();
-  });
-});
-
-
-//modal content
 
 // Get the modal element
 var modal = document.getElementById('settingsModal');
-
 // Get the button that opens the modal
 var settingsBtn = document.getElementById('settingsBtn');
 
 // Get the <span> element that closes the modal
 var closeBtn = document.querySelectorAll('.close');
 closeBtn.forEach(btn => {
-  btn.onclick = function() {
+  btn.onclick = function(event) {
+    event.stopPropagation(); // Prevent the click event from bubbling up
+    console.log("close");
     modal.style.display = 'none';
-    
   };
-})
+});
+
 // When the user clicks the button, open the modal
 settingsBtn.onclick = function() {
   modal.style.display = 'block';
 };
-
-// When the user clicks on <span> (x), close the modal
-
 
 // When the user clicks anywhere outside of the modal, close it
 window.onclick = function(event) {
@@ -131,6 +121,7 @@ window.onclick = function(event) {
     modal.style.display = 'none';
   }
 };
+
 
 // Save settings
 var saveBtn = document.getElementById('saveSettings');
@@ -155,22 +146,9 @@ breakDuration.value = userBreakTime;
 
 
 
-//Get the date
-const date = new Date();
-const month = date.getMonth() +1; // to 
-const day = date.getDate()
 
-const dayOfWeek = date.getDay()
 
-const weekdays = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-const weekdayName = weekdays[dayOfWeek];
-console.log(month, day, weekdayName)
 
-const dateElement = document.querySelector(".date");
-const weekdaysElement = document.querySelector(".weekdays");
-
-dateElement.textContent = `${month}/${day}`
-weekdaysElement.textContent = `${weekdayName}`
 
 
 
@@ -214,36 +192,68 @@ submitTask.addEventListener("click", function () {
 
   document.getElementById("taskContainer").appendChild(taskLi);
 
-// Save the task in localStorage
-const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-tasks.push({ id: checkbox.id, task: task, completed: false });
-localStorage.setItem("tasks", JSON.stringify(tasks));
+  // Save the task in localStorage
+  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
+  tasks.push({ id: checkbox.id, task: task, completed: false });
+  localStorage.setItem("tasks", JSON.stringify(tasks));
+
+  // Add event listener to update local storage when checkbox is checked
+  checkbox.addEventListener("change", function() {
+    const updatedTasks = tasks.map(t => {
+      if (t.id === checkbox.id) {
+        t.completed = checkbox.checked;
+      }
+      return t;
+    });
+    localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+  });
 
   addTaskModal.style.display = "none";
   taskInput.value = "";
 })
 
-// function to load task from localStorage and display them
-
 function loadTasks() {
-  const tasks = JSON.parse(localStorage.getItem("tasks")) || [];
-  tasks.forEach(task => {
-    const taskLi = document.createElement("li");
+  const taskList = document.getElementById("taskContainer");
+  const storedTasks = JSON.parse(localStorage.getItem("tasks")) || [];
+
+  storedTasks.forEach(({ id, task, completed }) => {
+    const taskElement = document.createElement("li");
     const checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.id = task.id;
-    checkbox.checked = task.completed;
     const label = document.createElement("label");
-    label.textContent = task.task;
-    label.htmlFor = checkbox.id;
-    taskLi.appendChild(checkbox);
-    taskLi.appendChild(label);
-    document.getElementById("taskContainer").appendChild(taskLi);
+
+    checkbox.type = "checkbox";
+    checkbox.id = id;
+    checkbox.checked = completed;
+    label.htmlFor = id;
+    label.textContent = task;
+
+    if (checkbox.checked) {
+      label.style.textDecoration = "line-through";
+      label.style.color = "gray";
+    } else {
+      label.style.textDecoration = "none";
+      label.style.color = "white";
+    }
+    // Attach event listener to update local storage when checkbox is checked
+    checkbox.addEventListener("change", function() {
+      const updatedTasks = storedTasks.map(t => {
+        if (t.id === id) {
+          t.completed = checkbox.checked;
+        }
+        return t;
+      });
+      localStorage.setItem("tasks", JSON.stringify(updatedTasks));
+    });
+
+    taskElement.appendChild(checkbox);
+    taskElement.appendChild(label);
+    taskList.appendChild(taskElement);
   });
 }
 document.addEventListener("DOMContentLoaded", function () {
   loadTasks();
 });
+
 
 // Function to toggle label style when checkbox is checked
 function toggleLabelStyle(checkbox) {
